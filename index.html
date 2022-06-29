@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="greet.js"></script>
+    <script src="transport-fee.js"></script>
+    <script src="enough-airtime.js"></script>
+    <script src="total-phone-bill.js"></script>
+    <script src="greet-widget.js" defer></script>
+    <script src="transport-fee-widget.js" defer></script>
+    <script src="enough-airtime-widget.js" defer></script>
+    <script src="total-phone-bill-widget.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Diplomata SC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Code Pro">
+
+<body>
+
+    <h1>My Bootcamp AlpineJS Widgets</h1>
+
+    <div class="container">
+        <div class="widgets">
+            <div class="widget" x-data="greetWidget">
+
+                <h2>Greet Widget</h2>
+
+                <div x-show="message.length > 0" class="message" x-text="message"></div>
+
+                <div class="inputName">
+                    <label for="name">Please enter your name: </label>
+                    <input type="text" x-model="name" id="name" placeholder="E.g. Bob">
+                </div>
+
+                <div class="">
+                    <button x-on:click="greetMe" class="btn-greet">
+                        <img src="./images/greeting.png" width="20" alt="">SUBMIT</button>
+                </div>
+
+            </div>
+
+            <div class="widget" x-data="transportFeeWidget">
+
+                <h2>Transport Fee Widget</h2>
+
+                <div x-show="price.length > 0" class="message" x-text="'Shift cost is: ' + price"></div>
+
+                <div class="input">
+                    <label for="shift">Please enter your working shift: </label>
+                    <input type="text" x-model="shift" id="shift" placeholder="E.g. day">
+                </div>
+
+                <div class="">
+                    <button x-on:click="displayFee" class="btn-fee">
+                        <img src="./images/cost.png" width="15" alt="">COST</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="widgets">
+            <div class="widget" x-data="enoughAirtimeWidget">
+
+                <h2>Enough Airtime Widget</h2>
+
+                <div class="input">
+                    <label for="usage">Please enter your airtime usage: </label>
+                    <input type="text" x-model="airtimeUsage" id="usage" placeholder="E.g. call,sms,data">
+                </div>
+                <div class="input">
+                    <label for="amount">Amount available: </label>
+                    <span class="currency-code">R</span>
+                    <input type="text" x-model="availableAmount" id="amount" placeholder="E.g. 12.00">
+                </div>
+
+                <div x-show="airtimeMessage.length > 0" class="message" x-text="airtimeMessage"></div>
+
+                <div class="">
+                    <button x-on:click="calculate" class="btn-airtime">
+                        <img src="./images/airtime-usage.png" width="15" alt="">BALANCE</button>
+                </div>
+
+            </div>
+
+            <div class="widget" x-data="totalPhoneBillWidget">
+
+                <h2>Total Phone Bill Widget</h2>
+
+                <div class="input">
+                    <label for="usedAirtime">Please enter your airtime usage: </label>
+                    <input type="text" x-model="tarrifCharged" id="usedAirtime" placeholder="E.g. call,sms">
+                </div>
+
+                <div x-show="usageMessage.length > 0" class="message" x-text="usageMessage"></div>
+
+                <div class="">
+                    <button x-on:click="calculateTarrif" class="btn-bill">
+                        <img src="./images/bill.png" width="20" alt="">BILL</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
